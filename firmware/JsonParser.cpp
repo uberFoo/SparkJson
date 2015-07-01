@@ -179,7 +179,7 @@ void JsonParser::parseNumberTo(JsonVariant &destination) {
     char *endOfDouble;
     double doubleValue = strtold(_ptr, &endOfDouble);
     Serial.println("DEBUG: doubleValue = " + String(doubleValue));
-    Serial.println("DEBUG: end is " + String(_ptr));
+    Serial.println("DEBUG: end is " + String(endOfDouble));
     delay(1000);
     // Count the decimal digits
     uint8_t decimals = static_cast<uint8_t>(_ptr - endOfLong - 1);

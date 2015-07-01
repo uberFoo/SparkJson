@@ -173,7 +173,8 @@ void JsonParser::parseNumberTo(JsonVariant &destination) {
   bool couldBeFloat = stopChar == '.' || stopChar == 'e' || stopChar == 'E';
 
   if (couldBeFloat) {
-    Serial.println("DEBUG: couldBeFloat");
+    Serial.println("DEBUG: couldBeFloat " + String(_ptr));
+    delay(1000);
     // Yes => parse it as a double
     double doubleValue = strtod(_ptr, &_ptr);
     Serial.println("DEBUG: doubleValue = " + String(doubleValue));

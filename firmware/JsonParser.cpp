@@ -176,7 +176,8 @@ void JsonParser::parseNumberTo(JsonVariant &destination) {
     Serial.println("DEBUG: couldBeFloat end = " + String(_ptr));
     delay(1000);
     // Yes => parse it as a double
-    double doubleValue = strtod(_ptr, &_ptr);
+    char *endOfDouble;
+    double doubleValue = strtod(_ptr, &endOfDouble);
     Serial.println("DEBUG: doubleValue = " + String(doubleValue));
     Serial.println("DEBUG: end = " + String(_ptr));
     delay(1000);
@@ -184,6 +185,7 @@ void JsonParser::parseNumberTo(JsonVariant &destination) {
     uint8_t decimals = static_cast<uint8_t>(_ptr - endOfLong - 1);
     Serial.println("DEBUG: decimals = " + String(decimals));
     delay(1000);
+    _ptr = endOfDouble;
     // Set the variant as a double
     destination.set(doubleValue, decimals);
   } else {
